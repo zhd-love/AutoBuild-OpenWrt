@@ -105,3 +105,18 @@ jobs:
       with:
         name: OpenWrt
         path: openwrt/bin
+        
+    - name: argon_new主题
+      working-directory: ./openwrt
+      run: |
+        cd package/lean
+        rm -rf luci-theme-argon
+        git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git
+        
+    - name: netdata汉化
+      working-directory: ./openwrt
+      run: |
+        cd package/lean
+        rm -rf luci-theme-netdata
+        git clone https://github.com/sirpdboy/luci-app-netdata.git
+      

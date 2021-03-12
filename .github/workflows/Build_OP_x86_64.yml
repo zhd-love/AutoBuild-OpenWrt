@@ -120,3 +120,25 @@ jobs:
         rm -rf luci-theme-netdata
         git clone https://github.com/sirpdboy/luci-app-netdata.git
       
+    - name: 删除冗余文件
+      working-directory: ./openwrt
+      run: |
+        cd bin/targets/*/*
+        rm -rf packages && mkdir packages
+        find -name "*feeds.buildinfo*" | xards -i mv -f {} packages
+        find -name "*version.buildinfo*" | xards -i mv -f {} packages
+        find -name "*sha256sums*" | xards -i mv -f {} packages
+        find -name "*.manifest*" | xards -i mv -f {} packages
+        find -name "*.bin*" | xards -i mv -f {} packages
+        find -name "*.vmdk*" | xards -i mv -f {} packages
+        find -name "*rootfs.img*" | xards -i mv -f {} packages
+        find -name "*tar.gz*" | xards -i mv -f {} packages
+        rm -rf packages
+        
+        
+        
+      
+      
+      
+      
+      
